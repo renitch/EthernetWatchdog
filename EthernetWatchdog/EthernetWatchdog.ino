@@ -2,18 +2,18 @@
 #include "EtherCard.h"
 #include <avr/wdt.h>
 
-#define GENERAL_PING_TIME_MS (5 * 1000)
-#define ALERT_PING_TIME_MS (1 * 1000)
+#define GENERAL_PING_TIME_MS (2 * 60 * 1000)
+#define ALERT_PING_TIME_MS (10 * 1000)
 #define ALERT_PING_MAX_TRIES 10
 
 // Initial cold start delay 30 min
-#define INITIAL_COLD_START_DELAY 1//30
+#define INITIAL_COLD_START_DELAY 30
 
 // How long reset relay should be active: 15 sec
 #define RELAY_RESET_DELAY (15 * 1000)
 
 // Delay after restart: 15 min
-#define AFTER_RESET_DELAY 1//15
+#define AFTER_RESET_DELAY 15
 
 // number of relay control pin
 #define RELAY_PIN 5
@@ -23,10 +23,10 @@ static unsigned long afterResetDelay = AFTER_RESET_DELAY * 60L * 1000L;
 
 static byte remoteIp[]   = {8, 8, 8, 8};
 
-static byte myStaticIp[]   = {192, 168,    88, 213};
-static byte myStaticGw[]   = {192, 168,    88,   1};
-static byte myStaticDns[]  = {192, 168,    88,   1};
-static byte myStaticMask[] = {255, 255,  255,   0};
+static byte myStaticIp[]   = {192, 168,   1, 213};
+static byte myStaticGw[]   = {192, 168,   1,   1};
+static byte myStaticDns[]  = {192, 168,   1,   1};
+static byte myStaticMask[] = {255, 255, 255,   0};
 
 static byte myMAC[] = {0x54, 0x55, 0x58, 0x10, 0x00, 0x24};
 
